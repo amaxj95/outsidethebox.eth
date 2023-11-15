@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.App-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.App-nav a {
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+  background-color: #143576e1;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.App-nav a:hover {
+  background-color: #061539;
+}
