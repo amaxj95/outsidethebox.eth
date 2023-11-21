@@ -3,9 +3,30 @@
 import React, { useState } from 'react';
 import logo from './outsidetheboxlogo.png'; // Ensure this path is correct
 import './App.css';
-import { Link } from 'react-router-dom';
+import ZipCodeSearch from './ZipCodeSearch';
+import ItemListForm from './ItemListForm';
+import Calendar from './Calendar';
 
 function App() {
+  const [step, setStep] = useState(1);
+  const [zipCode, setZipCode] = useState('');
+  const [items, setItems] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleZipCodeSearch = (zip) => {
+    setZipCode(zip);
+    setStep(2);
+  };
+
+  const handleItemsSubmit = (itemList) => {
+    setItems(itemList);
+    setStep(3);
+  };
+
+  const handleDateSelect = (date) => {
+    setSelectedDate(date);
+    // Further actions or submission
+  };
   const [showButtons, setShowButtons] = useState(false);
 
   const toggleButtons = () => {
@@ -22,6 +43,7 @@ function App() {
             <a href="https://discord.gg/Q6hyCATE">The Discord</a>
             <a href="https://github.com/amaxj95/outsidethebox.eth">The Source</a>
             <a href="">Leave a Review!</a>
+            <a href="">Thrifts & Threads</a>
           </nav>
         </nav><br></br><br></br><br></br>
         <img 
@@ -31,6 +53,13 @@ function App() {
           onClick={toggleButtons} 
           style={{ cursor: 'pointer' }}
         />
+        <br></br>
+        {step === 1 && <ZipCodeSearch onSearch={handleZipCodeSearch} />}
+        {step === 2 && <ItemListForm onSubmit={handleItemsSubmit} />}
+        {step === 3 && <Calendar onDateSelect={handleDateSelect} />}
+        <br></br><br></br><br></br>
+          <blockquote class="twitter-tweet"><p lang="zxx" dir="ltr"><a href="https://t.co/oAF0Snh8vh">https://t.co/oAF0Snh8vh</a></p>&mdash; Aus10 | @junk_ez_eth (@aus10va) <a href="https://twitter.com/aus10va/status/1724577747345764546?ref_src=twsrc%5Etfw">November 14, 2023</a></blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </header>
     </div>
   );

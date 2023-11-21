@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #214671;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -54,4 +54,11 @@
 
 .App-nav a:hover {
   background-color: #061539;
+}
+
+.zip-code-input {
+  width: 300px;
+  height: 40px;
+  font-size: 20px;
+  /* other styles */
 }

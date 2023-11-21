@@ -1,23 +1,13 @@
-# Stage 1: Build the React application
-FROM node:14 AS build
-
-# Set working directory
-WORKDIR /junk-ez-co.eth
-
-# Copy package.json and package-lock.json
+# Build stage
+FROM node:14 as build-stage
+WORKDIR /outside-the-box.eth
 COPY package*.json ./
-# Install dependencies
 RUN npm install
-# Copy app source
 COPY . .
-# Build the app
 RUN npm run build
 
-# Stage 2: Serve the app with Nginx
-FROM nginx:alpine
-# Copy the build output to replace the default nginx contents.
-COPY --from=build /junk-ez-co.eth/build /usr/share/nginx/html
-
-EXPOSE 41699 5001 3000 80
-# Start Nginx server
+# Serve stage
+FROM nginx:stable-alpine as serve-stage
+COPY --from=build-stage /outside-the-box.eth/build /usr/share/nginx/html
+EXPOSE 5432 80
 CMD ["nginx", "-g", "daemon off;"]
