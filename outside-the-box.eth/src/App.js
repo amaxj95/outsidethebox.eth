@@ -1,23 +1,27 @@
-//CHAT_API_KEY=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
 
 import React, { useState } from 'react';
 import logo from './outsidetheboxlogo.png'; // Ensure this path is correct
 import './App.css';
 import ZipCodeSearch from './ZipCodeSearch';
+import isValidZipCode from './ZipCodeSearch';
 import ItemListForm from './ItemListForm';
 import Calendar from './Calendar';
 
 function App() {
   const [step, setStep] = useState(1);
   const [zipCode, setZipCode] = useState('');
+  const [googleMapsUrl, setGoogleMapsUrl] = useState('');
   const [items, setItems] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleZipCodeSearch = (zip) => {
     setZipCode(zip);
+    if (isValidZipCode(zip)) { // Assuming you have a function to validate the zip code
+      setGoogleMapsUrl(`https://www.google.com/maps/search/?api=1&query=${zip}`);
+    }
     setStep(2);
   };
-
+  
   const handleItemsSubmit = (itemList) => {
     setItems(itemList);
     setStep(3);
@@ -55,6 +59,10 @@ function App() {
         />
         <br></br>
         {step === 1 && <ZipCodeSearch onSearch={handleZipCodeSearch} />}
+        {isValidZipCode && 
+          <a href={`https://www.google.com/maps/search/?api=1&query=${zipCode}`} target="_blank" rel="noopener noreferrer">
+            View on Google Maps
+          </a>}
         {step === 2 && <ItemListForm onSubmit={handleItemsSubmit} />}
         {step === 3 && <Calendar onDateSelect={handleDateSelect} />}
         <br></br><br></br><br></br>
@@ -66,3 +74,5 @@ function App() {
 }
 
 export default App;
+
+
