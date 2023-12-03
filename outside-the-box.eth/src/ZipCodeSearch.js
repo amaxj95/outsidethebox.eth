@@ -12,6 +12,15 @@ function ZipCodeSearch({ onSearch }) {
   const charlesCountyZIP = ['20601', '20602', '20603', '20604', '20611', '20612', '20613', '20616', '20617', '20622', '20625', '20632', '20637', '20640', '20643', '20645', '20646', '20658', '20659', '20661', '20662', '20664', '20675', '20677', '20693', '20695'];
   const saintMarysCountyZIP = ['20650', '20620', '20619', '20670', '20636', '20659', '20690', '20692', '20618', '20624', '20622'];
   const fairfaxCountyZIP = ['20041', '20069', '20070', '20120', '20121', '20122', '20124', '20151', '20153', '20170', '20171', '20172', '20190', '20191', '20192', '20194', '20195', '20196', '20206', '22003', '22009', '22015', '22027', '22030', '22031', '22032', '22033', '22034', '22035', '22036', '22037', '22038', '22039', '22041', '22042', '22043', '22044', '22046', '22060', '22066', '22067', '22079', '22081', '22082', '22095', '22096', '22101', '22102', '22103', '22106', '22107', '22108', '22109', '22116', '22118', '22119', '22121', '22122', '22124', '22150', '22151', '22152', '22153', '22156', '22158', '22159', '22160', '22161', '22180', '22181', '22182', '22183', '22185', '22199', '22303', '22306', '22307', '22308', '22309', '22310', '22311', '22312', '22315'];
+  const loudonCountyZIP = ['20105', '20107', '20117', '20118', '20129', '20131', '20132', '20134', '20134', '20141', '20142', '20146', '20147', '20148', '20148', '20152', '20152', '20152', '20158', '20159', '20160', '20160', '20163', '20164', '20165', '20165', '20166', '20166', '20167', '20175', '20176', '20176', '20177', '20178', '20180', '20197'];
+  const arlingtonCountyZIP = [];
+  const alexandriaCountyZIP = [];
+  const princeWilliamCountyZIP = [];
+  const fauquierCountyZIP = [];
+  const staffordCountyZIP = [];
+  const fredericksburgCountyZIP = [];
+  const dcZIP = [];
+
   // Function to check if the zipcode is in one of the specified areas
   const isValidZipCode = (zipcode) => {
     return montgomeryCountyZIP.includes(zipcode) ||
@@ -21,7 +30,15 @@ function ZipCodeSearch({ onSearch }) {
            baltimoreCountyZIP.includes(zipcode) ||
            charlesCountyZIP.includes(zipcode) ||
            fairfaxCountyZIP.includes(zipcode) ||
-           saintMarysCountyZIP.includes(zipcode);
+           loudonCountyZIP.includes(zipcode) || 
+           arlingtonCountyZIP.includes(zipcode) ||
+           alexandriaCountyZIP.includes(zipcode) ||
+           princeWilliamCountyZIP.includes(zipcode) ||
+           fauquierCountyZIP.includes(zipcode) ||
+           staffordCountyZIP.includes(zipcode) ||
+           fredericksburgCountyZIP.includes(zipcode) ||
+           saintMarysCountyZIP.includes(zipcode)||
+           dcZIP.includes(zipcode);
   };
 
   const handleSearch = () => {
